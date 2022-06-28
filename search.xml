@@ -4,11 +4,49 @@
   
     
     <entry>
+      <title>SPARQL endpoint 查询超时</title>
+      <link href="/2022/06/28/blog/%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F/SPARQL%20endpoint%20%E6%9F%A5%E8%AF%A2%E8%B6%85%E6%97%B6/"/>
+      <url>/2022/06/28/blog/%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F/SPARQL%20endpoint%20%E6%9F%A5%E8%AF%A2%E8%B6%85%E6%97%B6/</url>
+      
+        <content type="html"><![CDATA[<h1 id="SPARQL-endpoint-查询超时"><a href="#SPARQL-endpoint-查询超时" class="headerlink" title="SPARQL endpoint 查询超时"></a>SPARQL endpoint 查询超时</h1><h2 id="DBpedia：三元组的限制"><a href="#DBpedia：三元组的限制" class="headerlink" title="DBpedia：三元组的限制"></a>DBpedia：三元组的限制</h2><p> <a href="http://www.openlinksw.com/virtuoso">OpenLink Virtuoso</a></p><blockquote><p><a href="https://lists.w3.org/Archives/Public/public-lod/2011Aug/0028.html">https://lists.w3.org/Archives/Public/public-lod/2011Aug/0028.html</a></p></blockquote><p>根据以下设置，<a href="http://dbpedia.org/sparql">http://dbpedia.org/sparql</a> 端点对您可以建立的连接数/秒以及对结果集和查询时间的限制都有速率限制：</p><p>   [SPARQL]<br>   ResultSetMaxRows           = 2000<br>   MaxQueryExecutionTime      = 120<br>   MaxQueryCostEstimationTime = 1500</p><p>这些是为了确保每个人都有平等的机会从 dbpedia.org 获取引用数据，并防止编写错误的查询/机器人。</p><p>您可以使用以下选项来绕过这些限制：</p><ol><li><p>使用 LIMIT 和 OFFSET 关键字</p><p>您可以告诉 SPARQL 查询返回部分结果集以及要跳过的记录数，例如：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select ?s where &#123; ?s a ?o &#125;</span><br><span class="line">LIMIT 1000 OFFSET 2000</span><br></pre></td></tr></table></figure></li><li><p>在您自己的网络中设置 dbpedia 数据库</p><p>dbpedia 项目提供完整的数据集，因此您可以使用 Virtuoso Open Source Edition 在功能强大的机器上设置自己的安装。</p></li><li><p>使用 Amazon EC2 设置预配置的 Virtuoso + 数据库安装（不是免费的）</p><p>See: <a href="http://www.openlinksw.com/dataspace/dav/wiki/Main/VirtAWSDBpedia351C">http://www.openlinksw.com/dataspace/dav/wiki/Main/VirtAWSDBpedia351C</a></p></li></ol>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 待归档 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>SQL server实验</title>
+      <link href="/2022/06/28/blog/%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F/SQL%20Server/"/>
+      <url>/2022/06/28/blog/%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F/SQL%20Server/</url>
+      
+        <content type="html"><![CDATA[<h1 id="SQL-Server-2017"><a href="#SQL-Server-2017" class="headerlink" title="SQL Server 2017"></a>SQL Server 2017</h1><blockquote><p>使用Docker安装sqlServer：<a href="https://blog.csdn.net/weixin_45486510/article/details/122212379">https://blog.csdn.net/weixin_45486510/article/details/122212379</a></p><p>Windows10下Docker安装SQL Server启动失败解决方案：<a href="https://blog.csdn.net/yzj_xiaoyue/article/details/93969788">https://blog.csdn.net/yzj_xiaoyue/article/details/93969788</a></p><p>Navicat 15 破解安装：<a href="https://mp.weixin.qq.com/s/j5dhWGB7eTOmAPECpxBSzw">https://mp.weixin.qq.com/s/j5dhWGB7eTOmAPECpxBSzw</a></p></blockquote><h2 id="Docker-部署-SQL-Server-2017"><a href="#Docker-部署-SQL-Server-2017" class="headerlink" title="Docker 部署 SQL Server 2017"></a>Docker 部署 SQL Server 2017</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">获取 docker 镜像</span></span><br><span class="line">docker pull mcr.microsoft.com/mssql/server:2017-latest</span><br><span class="line"><span class="meta prompt_"> </span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"> win系统 双引号 ，linux使用 单引号  1433端口为SQL所采用的，不要更改！</span></span><br><span class="line">docker run -e &quot;ACCEPT_EULA=Y&quot; -e &quot;SA_PASSWORD=Password@&quot;  -p 4400:1433 --name sqlserver -d mcr.microsoft.com/mssql/server:2017-latest  </span><br></pre></td></tr></table></figure><h2 id="Docker-内访问-SQL-Server"><a href="#Docker-内访问-SQL-Server" class="headerlink" title="Docker 内访问 SQL Server"></a>Docker 内访问 SQL Server</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it sqlserver /bin/bash</span><br><span class="line"></span><br><span class="line">/opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P &quot;Password@&quot;</span><br></pre></td></tr></table></figure><p>Navicat连接SQL server</p><blockquote><p>Navicat连接SQL server详细步骤：<a href="https://blog.csdn.net/liqz666/article/details/107813530">https://blog.csdn.net/liqz666/article/details/107813530</a></p></blockquote><p>navicat 连接十分麻烦。。。</p><p>SQL server 数据库<strong>默认</strong>是不允许被一些其他图形化界面连接上的，所以如果需要想要连接，必须要进行SQL Server 网络配置TCP端口，以及在防火墙里配置1433端口的出站和 入站规则。（放弃…）</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># 创建 design_db 数据库</span><br><span class="line"><span class="keyword">create</span> database design_db</span><br><span class="line"></span><br><span class="line"># 查看所有数据库</span><br><span class="line"><span class="keyword">select</span> name <span class="keyword">from</span> sys.Databases</span><br><span class="line">go</span><br><span class="line"></span><br><span class="line"># 使用 design_db 数据库，创建 Student 表</span><br><span class="line">use design_db</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> tabele Student</span><br><span class="line">(</span><br><span class="line">ID <span class="type">int</span> <span class="keyword">primary</span> key <span class="keyword">identity</span>(<span class="number">1</span>,<span class="number">1</span>),</span><br><span class="line">Name <span class="type">varchar</span>(<span class="number">50</span>)</span><br><span class="line">)</span><br><span class="line">go</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>最终使用</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 待归档 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>常用命令</title>
       <link href="/2022/06/20/blog/%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
       <url>/2022/06/20/blog/%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
       
-        <content type="html"><![CDATA[<h2 id="Blog"><a href="#Blog" class="headerlink" title="Blog"></a>Blog</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it hexo /bin/bash</span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<h2 id="Blog"><a href="#Blog" class="headerlink" title="Blog"></a>Blog</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it hexo /bin/bash</span><br></pre></td></tr></table></figure><h2 id="启动-virtuoso"><a href="#启动-virtuoso" class="headerlink" title="启动 virtuoso"></a>启动 virtuoso</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">virtuoso/virtuoso-opensource/database目录下，后台启动 virtuoso</span>  </span><br><span class="line">nohup ../bin/virtuoso-t -fd &gt; log 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure>]]></content>
       
       
       
