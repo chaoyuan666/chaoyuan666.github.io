@@ -1,0 +1,434 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Pytorch学习笔记 | 超远の杂货铺</title><meta name="keywords" content="Pytorch"><meta name="author" content="ChaoYuan"><meta name="copyright" content="ChaoYuan"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="开始使用Pytorch炼丹之旅了！！！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Pytorch学习笔记">
+<meta property="og:url" content="http://chaoyuan666.github.io/2022/01/22/blog/%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F/Pytorch%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="超远の杂货铺">
+<meta property="og:description" content="开始使用Pytorch炼丹之旅了！！！">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://picsum.photos/id/525/5184/3456">
+<meta property="article:published_time" content="2022-01-22T16:19:02.000Z">
+<meta property="article:modified_time" content="2022-02-22T14:12:53.821Z">
+<meta property="article:author" content="ChaoYuan">
+<meta property="article:tag" content="Pytorch">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://picsum.photos/id/525/5184/3456"><link rel="shortcut icon" href="/img/000.jpg"><link rel="canonical" href="http://chaoyuan666.github.io/2022/01/22/blog/%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F/Pytorch%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: ChaoYuan","link":"链接: ","source":"来源: 超远の杂货铺","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Pytorch学习笔记',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-02-22 14:12:53'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/000.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">38</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">28</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://picsum.photos/id/525/5184/3456')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">超远の杂货铺</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Pytorch学习笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-01-22T16:19:02.000Z" title="发表于 2022-01-22 16:19:02">2022-01-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-02-22T14:12:53.821Z" title="更新于 2022-02-22 14:12:53">2022-02-22</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Pytorch学习笔记"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>开始使用Pytorch炼丹之旅了！！！</p>
+<span id="more"></span>
+
+<h2 id="1-模型固定"><a href="#1-模型固定" class="headerlink" title="1.模型固定"></a>1.模型固定</h2><h3 id="为什么使用相同的网络结构，跑出来的效果完全不同，用的学习率，迭代次数，batch-size-都是一样？"><a href="#为什么使用相同的网络结构，跑出来的效果完全不同，用的学习率，迭代次数，batch-size-都是一样？" class="headerlink" title="为什么使用相同的网络结构，跑出来的效果完全不同，用的学习率，迭代次数，batch size 都是一样？"></a>为什么使用相同的网络结构，跑出来的效果完全不同，用的学习率，迭代次数，batch size 都是一样？</h3><p><strong>固定随机数种子</strong>是非常重要的。但是如果你使用的是PyTorch等框架，还要看一下<strong>框架的种子是否固定了</strong>。还有，如果你用了cuda，别忘了cuda的随机数种子。这里还需要用到<code>torch.backends.cudnn.deterministic</code>.</p>
+<p><code>torch.backends.cudnn.deterministic</code>是啥？顾名思义，将这个 flag 置为True的话，每次返回的卷积算法将是<strong>确定</strong>的，即默认算法。如果配合上设置 Torch 的随机种子为固定值的话，应该可以保证每次运行网络的时候相同输入的输出是固定的，代码大致这样:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">init_seeds</span>(<span class="params">seed=<span class="number">0</span></span>):</span><br><span class="line">    torch.manual_seed(seed) <span class="comment"># sets the seed for generating random numbers.</span></span><br><span class="line">    torch.cuda.manual_seed(seed) <span class="comment"># Sets the seed for generating random numbers for the current GPU. It’s safe to call this function if CUDA is not available; in that case, it is silently ignored.</span></span><br><span class="line">    torch.cuda.manual_seed_all(seed) <span class="comment"># Sets the seed for generating random numbers on all GPUs. It’s safe to call this function if CUDA is not available; in that case, it is silently ignored.</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> seed == <span class="number">0</span>:</span><br><span class="line">        torch.backends.cudnn.deterministic = <span class="literal">True</span></span><br><span class="line">        torch.backends.cudnn.benchmark = <span class="literal">False</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>参考：</p>
+<ol>
+<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41990278/article/details/106268969">【pytorch】torch.backends.cudnn.deterministic</a>（√）</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/73711222">torch.backends.cudnn.benchmark ?!</a>（更详细）</p>
+</li>
+</ol>
+<hr>
+<h2 id="2-PyTorch是如何求梯度的？"><a href="#2-PyTorch是如何求梯度的？" class="headerlink" title="2.PyTorch是如何求梯度的？"></a>2.PyTorch是如何求梯度的？</h2><p>参考：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://tangshusen.me/Dive-into-DL-PyTorch/#/chapter02_prerequisite/2.3_autograd">动手学深度学习 2.3 自动求梯度</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/29923090">PyTorch 的 backward 为什么有一个 grad_variables 参数？</a></li>
+</ol>
+<hr>
+<h2 id="3-什么是线性回归？"><a href="#3-什么是线性回归？" class="headerlink" title="3.什么是线性回归？"></a>3.什么是线性回归？</h2><p><strong>线性回归</strong>输出是一个<strong>连续值</strong>，因此适用于回归问题。回归问题在实际中很常见，如预测房屋价格、气温、销售额等连续值的问题。</p>
+<p>与回归问题不同，分类问题中模型的最终输出是一个<strong>离散值</strong>。我们所说的图像分类、垃圾邮件识别、疾病检测等输出为离散值的问题都属于分类问题的范畴。<strong>softmax回归</strong>则适用于分类问题。</p>
+<p>由于线性回归和softmax回归都是<strong>单层神经网络</strong>，它们涉及的概念和技术同样适用于大多数的深度学习模型。</p>
+<p>线性回归的基本要素：</p>
+<ul>
+<li><p>模型定义</p>
+<p> 设房屋的面积为$x_{1}$，房龄为$x_{2}$，售出价格为$ y $，建立基于输入$x_{1}$和$x_{2}$来计算输出y的表达式，也就是模型（model）。<br> $$<br> \hat{y}=x_{1} w_{1}+x_{2} w_{2}+b<br> $$<br> 其中，$w_{1}$和$w_{2}$是<strong>权重</strong>（weight），$b$是<strong>偏差</strong>（bias），且均为标量。他们是线性回归模型的参数（parameter）。模型输出$\hat y$是线性回归对真实价格$y$的预测或估计。</p>
+</li>
+<li><p>模型训练</p>
+<p> 通过数据来寻找特定的模型参数值，使模型在数据上的误差尽可能小。这个过程叫作<strong>模型训练</strong>（model training）。下面我们介绍模型训练所涉及的3个要素。</p>
+<ul>
+<li><p>训练数据</p>
+<p>通常收集一系列的真实数据，例如多栋房屋的真实售出价格和它们对应的面积和房龄。我们希望在这个数据上面寻找模型参数来使模型的预测价格与真实价格的误差最小。</p>
+<p>在机器学习术语里，该数据集被称为<strong>训练数据集</strong>（training data set）或<strong>训练集</strong>（training set），一栋房屋被称为一个<strong>样本</strong>（sample），其真实售出价格叫作<strong>标签</strong>（label），用来预测标签的两个因素叫作<strong>特征</strong>（feature）。特征用来表征样本的特点。</p>
+<p>假设我们采集的样本数为$n$，索引为i的样本的特征为$x_{1}^{(i)}$和$x_{2}^{(i)}$，标签为$y^{(i)}$。对于索引为$i$的房屋，线性回归模型的房屋价格预测表达式为<br>$$<br>\hat{y}^{(i)}=x_{1}^{(i)} w_{1}+x_{2}^{(i)} w_{2}+b<br>$$</p>
+</li>
+<li><p>损失函数</p>
+<p>在模型训练中，我们需要衡量价格预测值与真实值之间的<strong>误差</strong>。通常我们会选取一个<strong>非负数</strong>作为误差，且数值越小表示误差越小。一个常用的选择是平方函数。它在评估索引为$ i $的样本误差的表达式为<br>$$<br>\ell^{(i)}\left(w_{1}, w_{2}, b\right)=\frac{1}{2}\left(\hat{y}^{(i)}-y^{(i)}\right)^{2}<br>$$<br>其中常数$\frac{1}{2}$使对平方项求导后的常数系数为1，这样在形式上稍微简单一些。显然，误差越小表示预测价格与真实价格越相近，且当二者相等时误差为0。</p>
+<p>给定训练数据集，这个误差只与模型参数相关，因此我们将它记为以模型参数为参数的函数。在机器学习里，将衡量误差的函数称为<strong>损失函数</strong>（loss function）。这里使用的平方误差函数也称为<strong>平方损失</strong>（square loss）。</p>
+<p>通常，我们用训练数据集中所有样本误差的平均来衡量模型预测的质量，即<br>$$<br>\ell\left(w_{1}, w_{2}, b\right)=\frac{1}{n} \sum_{i=1}^{n} \ell^{(i)}\left(w_{1}, w_{2}, b\right)=\frac{1}{n} \sum_{i=1}^{n} \frac{1}{2}\left(x_{1}^{(i)} w_{1}+x_{2}^{(i)} w_{2}+b-y^{(i)}\right)^{2}<br>$$<br>在模型训练中，我们希望找出一组模型参数，记为$w_{1}^{*},w_{2}^{*}, b^{*}$，来使训练样本平均损失最小：<br>$$<br>w_{1}^{<em>}, w_{2}^{</em>}, b^{*}=\underset{w1,w2, b}{\arg \min } \ell\left({w}<em>{1},w</em>{2}, b\right)<br>$$</p>
+</li>
+<li><p>优化算法</p>
+<p>当模型和损失函数形式较为简单时，上面的误差最小化问题的解可以直接用公式表达出来。这类解叫作<strong>解析解</strong>（analytical solution）。本节使用的线性回归和平方误差刚好属于这个范畴。然而，大多数深度学习模型并没有解析解，只能通过优化算法有限次迭代模型参数来尽可能降低损失函数的值。这类解叫作<strong>数值解</strong>（numerical solution）。</p>
+<p>在求数值解的优化算法中，<strong>小批量随机梯度下降</strong>（mini-batch stochastic gradient descent）在深度学习中被广泛使用。它的算法很简单：先选取一组模型参数的初始值，如随机选取；接下来对参数进行多次迭代，使每次迭代都可能降低损失函数的值。在每次迭代中，先随机均匀采样一个由固定数目训练数据样本所组成的小批量（mini-batch）$\mathcal{B}$，然后求小批量中数据样本的平均损失有关模型参数的导数（梯度），最后用此结果与预先设定的一个正数的乘积作为模型参数在本次迭代的减小量。</p>
+<p>在训练本节讨论的线性回归模型的过程中，模型的每个参数将作如下迭代：<br>$$<br>\begin{aligned}<br>w_{1} &amp; \leftarrow w_{1}-\frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}} \frac{\partial \ell^{(i)}\left(w_{1}, w_{2}, b\right)}{\partial w_{1}}=w_{1}-\frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}} x_{1}^{(i)}\left(x_{1}^{(i)} w_{1}+x_{2}^{(i)} w_{2}+b-y^{(i)}\right), \<br>w_{2} &amp; \leftarrow w_{2}-\frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}} \frac{\partial \ell^{(i)}\left(w_{1}, w_{2}, b\right)}{\partial w_{2}}=w_{2}-\frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}} x_{2}^{(i)}\left(x_{1}^{(i)} w_{1}+x_{2}^{(i)} w_{2}+b-y^{(i)}\right), \<br>b &amp; \leftarrow b-\frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}} \frac{\partial \ell^{(i)}\left(w_{1}, w_{2}, b\right)}{\partial b}=b-\frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}}\left(x_{1}^{(i)} w_{1}+x_{2}^{(i)} w_{2}+b-y^{(i)}\right) .<br>\end{aligned}<br>$$<br>在上式中，$|\mathcal{B}|$代表每个<strong>小批量中的样本个数</strong>（批量大小，batch size），$\eta$称作<strong>学习率</strong>（learning rate）并取正数。需要强调的是，这里的<strong>批量大小</strong>和<strong>学习率</strong>的值是人为设定的，并不是通过模型训练学出的，因此叫作<strong>超参数</strong>（hyperparameter）。我们通常所说的“调参”指的正是调节超参数，例如通过反复试错来找到超参数合适的值。在少数情况下，超参数也可以通过模型训练学出。</p>
+</li>
+</ul>
+</li>
+<li><p>模型预测</p>
+<p>模型训练完成后，我们将模型参数$w_{1},w_{2},b$在优化算法停止时的值分别记作$\hat{w}_{1}, \hat{w}_{2}, \hat{b}$。注意，这里我们得到的并不一定是最小化损失函数的最优解$w_{1}^{*},w_{2}^{*}, b^{*}$,而是对最优解的一个近似。然后，我们就可以使用学出的线性回归模型$x_{1} \hat{w}_{1}+x_{2} \hat{w}_{2}+\hat{b}$来估算训练数据集以外任意一栋面积（平方米）为$x_{1}$、房龄（年）为$x_{2}$的房屋的价格了。这里的估算也叫作<strong>模型预测</strong>、<strong>模型推断</strong>或<strong>模型测试</strong>。</p>
+</li>
+</ul>
+<p>线性回归的表示方法</p>
+<ul>
+<li><p>神经网络图</p>
+<p>下图使用神经网络图表示刚刚介绍的线性回归模型。神经网络图隐去了模型参数权重和偏差。</p>
+<img src="https://pic.imgdb.cn/item/6214ed972ab3f51d91a6f6a7.jpg" />
+
+<p>其中，输入层的输入个数为2，分别是$x_{1},x_{2}$。输入个数也叫特征数或特征向量维度。输出层的输出个数为1，对应于$o$。需要注意的是，我们直接将图3.1中神经网络的输出$o$作为线性回归的输出，即$\hat{y}=o$。由于输入层并不涉及计算，按照惯例，图3.1所示的神经网络的层数为1。所以，线性回归是一个单层神经网络。输出层中负责计算$o$的单元又叫神经元。在线性回归中，$o$的计算依赖于$x_{1},x_{2}$。也就是说，输出层中的神经元和输入层中各个输入完全连接。因此，这里的输出层又叫<strong>全连接层</strong>（fully-connected layer）或<strong>稠密层</strong>（dense layer）。</p>
+</li>
+<li><p>矢量计算表达式</p>
+<p>在模型训练或预测时，常常会同时处理多个数据样本并用到矢量计算。</p>
+<img src="https://pic.imgdb.cn/item/6214edcc2ab3f51d91a79053.jpg" />
+
+<p>结果很明显，后者比前者更省时。因此，我们应该尽可能采用<strong>矢量计算</strong>，以提升计算效率。</p>
+</li>
+</ul>
+<p>再回到房价预测问题。如果对训练数据集里的3个房屋样本（索引分别为1、2和3）逐一预测价格，将得到<br>$$<br>\begin{array}{l}<br>\hat{y}^{(1)}=x_{1}^{(1)} w_{1}+x_{2}^{(1)} w_{2}+b \<br>\hat{y}^{(2)}=x_{1}^{(2)} w_{1}+x_{2}^{(2)} w_{2}+b \<br>\hat{y}^{(3)}=x_{1}^{(3)} w_{1}+x_{2}^{(3)} w_{2}+b<br>\end{array}<br>$$<br>现在，我们将上面3个等式转化成矢量计算。设<br>$$<br>\hat{\boldsymbol{y}}=\left[\begin{array}{c}<br>\hat{y}^{(1)} \<br>\hat{y}^{(2)} \<br>\hat{y}^{(3)}<br>\end{array}\right], \quad \boldsymbol{X}=\left[\begin{array}{cc}<br>x_{1}^{(1)} &amp; x_{2}^{(1)} \<br>x_{1}^{(2)} &amp; x_{2}^{(2)} \<br>x_{1}^{(3)} &amp; x_{2}^{(3)}<br>\end{array}\right], \quad \boldsymbol{w}=\left[\begin{array}{c}<br>w_{1} \<br>w_{2}<br>\end{array}\right]<br>$$<br>对3个房屋样本预测价格的矢量计算表达式为<br>$$<br>\hat{\boldsymbol{y}}=\boldsymbol{X} \boldsymbol{w} + b<br>$$<br>其中的加法运算使用了广播机制。<br>$$<br>\ell(\boldsymbol{\theta})=\frac{1}{2 n}(\hat{\boldsymbol{y}}-\boldsymbol{y})^{\top}(\hat{\boldsymbol{y}}-\boldsymbol{y})<br>$$</p>
+<p>$$<br>\nabla_{\boldsymbol{\theta}} \ell^{(i)}(\boldsymbol{\theta})=\left[\begin{array}{c}<br>\frac{\partial \ell^{(i)}\left(w_{1}, w_{2}, b\right)}{\partial \ell^{(i)}\left(w_{1}, w_{2}, b\right)} \<br>\frac{\partial_{1}, w_{2}}{\partial \ell^{(i)}\left(w_{1}, w 2, b\right)}<br>\end{array}\right]=\left[\begin{array}{c}<br>x_{1}^{(i)}\left(x_{1}^{(i)} w_{1}+x_{2}^{(i)} w_{2}+b-y^{(i)}\right) \<br>x_{2}^{(i)}\left(x_{1}^{(i)} w_{1}+x_{2}^{(i)} w_{2}+b-y^{(i)}\right) \<br>x_{1}^{(i)} w_{1}+x_{2}^{(i)} w_{2}+b-y^{(i)}<br>\end{array}\right]=\left[\begin{array}{c}<br>x_{1}^{(i)} \<br>x_{2}^{(i)} \<br>1<br>\end{array}\right]\left(\hat{y}^{(i)}-y^{(i)}\right)<br>$$</p>
+<hr>
+<h2 id="4-softmax回归"><a href="#4-softmax回归" class="headerlink" title="4.softmax回归"></a>4.softmax回归</h2><p>前面介绍的线性回归模型适用于输出为连续值的情景。在另一类情景中，模型输出可以是一个像图像类别这样的<strong>离散值</strong>。对于这样的离散值预测问题，我们可以使用诸如<strong>softmax回归</strong>在内的分类模型。和线性回归不同，softmax回归的输出单元从一个变成了多个，且引入了softmax运算使输出更适合离散值的预测和训练。</p>
+<p>分类问题</p>
+<p>让我们考虑一个简单的图像分类问题，其输入图像的高和宽均为2像素，且色彩为灰度。这样每个像素值都可以用一个标量表示。我们将图像中的4像素分别记为$x_{1},x_{2},x_{3},x_{4}$。假设训练数据集中图像的真实标签为狗、猫或鸡（假设可以用4像素表示出这3种动物），这些标签分别对应离散值$y_{1},y_{2},y_{3}$。</p>
+<p>softmax回归模型</p>
+<p>softmax回归跟线性回归一样将输入特征与权重做线性叠加。与线性回归的一个主要不同在于，softmax回归的输出值个数等于标签里的类别数。因为一共有4种特征和3种输出动物类别，所以权重包含12个标量（带下标的$w$）、偏差包含3个标量（带下标的b），且对每个输入计算$o_{1},o_{2},o_{3}$这三个输出：<br>$$<br>\begin{array}{}<br>o_{1}=x_{1} w_{11}+x_{2} w_{21}+x_{3} w_{31}+x_{4} w_{41}+b_{1} \<br>o_{2}=x_{1} w_{12}+x_{2} w_{22}+x_{3} w_{32}+x_{4} w_{42}+b_{2} \<br>o_{3}=x_{1} w_{13}+x_{2} w_{23}+x_{3} w_{33}+x_{4} w_{43}+b_{3}<br>\end{array}<br>$$<br>下图用神经网络图描绘了上面的计算。softmax回归同线性回归一样，也是一个单层神经网络。由于每个输出$o_{1},o_{2},o_{3}$的计算都要依赖于所有的输入$x_{1},x_{2},x_{3},x_{4}$，softmax回归的输出层也是一个全连接层。</p>
+<img src="https://pic.imgdb.cn/item/6214eded2ab3f51d91a7f028.jpg" />
+
+<p>既然分类问题需要得到离散的预测输出，一个简单的办法是将输出值$o_{i}$当作预测类别是$i$的置信度，并将值最大的输出所对应的类作为预测输出，即输出$\arg \max _{i} o_{i}$。例如，如果$o_{1},o_{2},o_{3}$分别为0.1,10,0.1，由于$o_{2}$最大，那么预测类别为2，其代表猫。</p>
+<hr>
+<h2 id="5-多层感知机"><a href="#5-多层感知机" class="headerlink" title="5.多层感知机"></a>5.多层感知机</h2><p>多层感知机（multilayer perceptron，MLP）为例，介绍多层神经网络的概念。</p>
+<p>隐藏层</p>
+<p>多层感知机在单层神经网络的基础上引入了一到多个隐藏层（hidden layer）。隐藏层位于输入层和输出层之间。下图展示了一个多层感知机的神经网络图，它含有一个隐藏层，该层中有5个隐藏单元。</p>
+<img src="https://pic.imgdb.cn/item/6214ee3a2ab3f51d91a8c607.jpg" />
+
+<p>在上图的多层感知机中，输入和输出个数分别为4和3，中间的隐藏层中包含了5个隐藏单元（hidden unit）。由于输入层不涉及计算，多层感知机的层数为2。隐藏层中的神经元和输入层中各个输入完全连接，输出层中的神经元和隐藏层中的各个神经元也完全连接。因此，多层感知机中的隐藏层和输出层都是全连接层。<br>$$<br>\begin{aligned}<br>\boldsymbol{H} &amp;=\boldsymbol{X} \boldsymbol{W}<em>{h}+\boldsymbol{b}</em>{h} \<br>\boldsymbol{O} &amp;=\boldsymbol{H} \boldsymbol{W}<em>{o}+\boldsymbol{b}</em>{o}<br>\end{aligned}<br>$$</p>
+<p>$$<br>\boldsymbol{O}=\left(\boldsymbol{X} \boldsymbol{W}<em>{h}+\boldsymbol{b}</em>{h}\right) \boldsymbol{W}<em>{o}+\boldsymbol{b}</em>{o}=\boldsymbol{X} \boldsymbol{W}<em>{h} \boldsymbol{W}</em>{o}+\boldsymbol{b}<em>{h} \boldsymbol{W}</em>{o}+\boldsymbol{b}_{o}<br>$$</p>
+<p>$$<br>\operatorname{ReLU}(x)=\max (x, 0)<br>$$</p>
+<p>$$<br>\operatorname{sigmoid}(x)=\frac{1}{1+\exp (-x)}<br>$$</p>
+<p>$$<br>\operatorname{sigmoid}^{\prime}(x)=\operatorname{sigmoid}(x)(1-\operatorname{sigmoid}(x)) \text {. }<br>$$</p>
+<p>$$<br>\tanh (x)=\frac{1-\exp (-2 x)}{1+\exp (-2 x)}<br>$$</p>
+<p>$$<br>\tanh ^{\prime}(x)=1-\tanh ^{2}(x)<br>$$</p>
+<p>$$<br>\begin{aligned}<br>\boldsymbol{H} &amp;=\phi\left(\boldsymbol{X} \boldsymbol{W}<em>{h}+\boldsymbol{b}</em>{h}\right), \<br>\boldsymbol{O} &amp;=\boldsymbol{H} \boldsymbol{W}<em>{o}+\boldsymbol{b}</em>{o},<br>\end{aligned}<br>$$</p>
+<hr>
+<h2 id="6-模型选择、欠拟合和过拟合"><a href="#6-模型选择、欠拟合和过拟合" class="headerlink" title="6.模型选择、欠拟合和过拟合"></a>6.模型选择、欠拟合和过拟合</h2><p>在实验中，我们评价了机器学习模型在训练数据集和测试数据集上的表现。如果改变过实验中的模型结构或者超参数，也许发现了：当模型在训练数据集上更准确时，它在测试数据集上却不一定更准确。这是为什么呢？</p>
+<p>训练误差和泛化误差</p>
+<p><strong>训练误差</strong>（training error）指模型在训练数据集上表现出的误差，<strong>泛化误差</strong>（generalization error）指模型在任意一个测试数据样本上表现出的误差的期望，并常常通过测试数据集上的误差来近似。计算训练误差和泛化误差可以使用之前介绍过的损失函数，例如线性回归用到的平方损失函数和softmax回归用到的交叉熵损失函数。</p>
+<p>在机器学习里，我们通常假设训练数据集（训练题）和测试数据集（测试题）里的每一个样本都是从同一个概率分布中相互独立地生成的。基于该独立同分布假设，给定任意一个机器学习模型（含参数），它的训练误差的期望和泛化误差都是一样的。例如，如果我们将模型参数设成随机值，那么训练误差和泛化误差会非常相近。训练后，训练误差的期望小于或等于泛化误差。也就是说，一般情况下，由训练数据集学到的模型参数会使模型在训练数据集上的表现优于或等于在测试数据集上的表现。由于无法从训练误差估计泛化误差，一味地降低训练误差并不意味着泛化误差一定会降低。</p>
+<p>机器学习模型应关注<strong>降低泛化误差</strong>。</p>
+<p>模型选择</p>
+<p>在机器学习中，通常需要评估若干候选模型的表现并从中选择模型。这一过程称为<strong>模型选择</strong>（model selection）。可供选择的候选模型可以是有着不同超参数的同类模型。以多层感知机为例，我们可以选择隐藏层的个数，以及每个隐藏层中隐藏单元个数和激活函数。为了得到有效的模型，我们通常要在模型选择上下一番功夫。下面，我们来描述模型选择中经常使用的<strong>验证数据集</strong>（validation data set）。</p>
+<p>验证数据集</p>
+<p>从严格意义上讲，测试集只能在所有超参数和模型参数选定后使用一次。不可以使用测试数据选择模型，如调参。由于无法从训练误差估计泛化误差，因此也不应只依赖训练数据选择模型。鉴于此，我们可以预留一部分在训练数据集和测试数据集以外的数据来进行模型选择。这部分数据被称为<strong>验证数据集</strong>，简称<strong>验证集</strong>（validation set）。例如，我们可以从给定的训练集中随机选取一小部分作为验证集，而将剩余部分作为真正的训练集。</p>
+<p>然而在实际应用中，由于数据不容易获取，测试数据极少只使用一次就丢弃。因此，实践中验证数据集和测试数据集的界限可能比较模糊。从严格意义上讲，除非明确说明，否则本书中实验所使用的测试集应为验证集，实验报告的测试结果（如测试准确率）应为验证结果（如验证准确率）。</p>
+<p>$K$折交叉验证</p>
+<p>由于验证数据集不参与模型训练，当训练数据不够用时，预留大量的验证数据显得太奢侈。一种改善的方法是$K$折交叉验证（$K$-fold cross-validation）。在$K$折交叉验证中，我们把原始训练数据集分割成$K$个不重合的子数据集，然后我们做$K$次模型训练和验证。每一次，我们使用一个子数据集验证模型，并使用其他$K−1$个子数据集来训练模型。在这$K$次训练和验证中，每次用来验证模型的子数据集都不同。最后，我们对这$K$次训练误差和验证误差分别求平均。</p>
+<p>欠拟合和过拟合</p>
+<p>接下来，将探究模型训练中经常出现的两类典型问题：一类是模型无法得到较低的训练误差，我们将这一现象称作<strong>欠拟合</strong>（underfitting）；另一类是模型的训练误差远小于它在测试数据集上的误差，我们称该现象为<strong>过拟合</strong>（overfitting）。在实践中，我们要尽可能同时应对欠拟合和过拟合。虽然有很多因素可能导致这两种拟合问题，在这里我们重点讨论两个因素：模型复杂度和训练数据集大小。</p>
+<blockquote>
+<p>关于模型复杂度和训练集大小对学习的影响的详细理论分析可参见 <a target="_blank" rel="noopener" href="https://tangshusen.me/2018/12/09/vc-dimension/">博客</a></p>
+</blockquote>
+<p>模型复杂度</p>
+<p>为了解释模型复杂度，我们以多项式函数拟合为例。给定一个由标量数据特征$x$和对应的标量标签$y$组成的训练数据集，多项式函数拟合的目标是找一个$K$阶多项式函数<br>$$<br>\hat{y}=b+\sum_{k=1}^{K} x^{k} w_{k}<br>$$<br>来近似 $y$。在上式中，$w_{k}$是模型的权重参数，$b$是偏差参数。与线性回归相同，多项式函数拟合也使用平方损失函数。特别地，一阶多项式函数拟合又叫线性函数拟合。</p>
+<p>因为高阶多项式函数模型参数更多，模型函数的选择空间更大，所以高阶多项式函数比低阶多项式函数的复杂度更高。因此，高阶多项式函数比低阶多项式函数更容易在相同的训练数据集上得到更低的训练误差。给定训练数据集，模型复杂度和误差之间的关系通常下图所示。给定训练数据集，如果模型的复杂度过低，很容易出现欠拟合；如果模型复杂度过高，很容易出现过拟合。应对欠拟合和过拟合的一个办法是针对数据集选择合适复杂度的模型。</p>
+<p><img src="https://pic.imgdb.cn/item/6214ee522ab3f51d91a909bf.jpg" alt="image-20220127101745940"></p>
+<p>训练数据集大小</p>
+<p>影响欠拟合和过拟合的另一个重要因素是训练数据集的大小。一般来说，如果训练数据集中样本数过少，特别是比模型参数数量（按元素计）更少时，过拟合更容易发生。此外，泛化误差不会随训练数据集里样本数量增加而增大。因此，在计算资源允许的范围之内，我们通常希望训练数据集大一些，特别是在模型复杂度较高时，例如层数较多的深度学习模型。</p>
+<p>总结</p>
+<ul>
+<li>由于无法从训练误差估计泛化误差，一味地降低训练误差并不意味着泛化误差一定会降低。机器学习模型应关注降低泛化误差。</li>
+<li>可以使用验证数据集来进行模型选择。</li>
+<li>欠拟合指模型无法得到较低的训练误差，过拟合指模型的训练误差远小于它在测试数据集上的误差。</li>
+<li>应选择复杂度合适的模型并避免使用过少的训练样本。</li>
+</ul>
+<hr>
+<h2 id="7-权重衰减"><a href="#7-权重衰减" class="headerlink" title="7.权重衰减"></a>7.权重衰减</h2><p>过拟合现象，即模型的训练误差远小于它在测试集上的误差。虽然增大训练数据集可能会减轻过拟合，但是获取额外的训练数据往往代价高昂。应对过拟合问题的常用方法：<strong>权重衰减</strong>（weight decay）。</p>
+<p>方法</p>
+<p>权重衰减等价于$L2$范数正则化（regularization）。正则化通过为模型损失函数添加<strong>惩罚项</strong>使学出的模型参数值较小，是应对过拟合的常用手段。我们先描述$L2$范数正则化，再解释它为何又称权重衰减。$L2$范数正则化在模型原损失函数基础上添加$L2$ 范数惩罚项，从而得到训练所需要最小化的函数。$L2$范数惩罚项指的是模型权重参数每个元素的平方和与一个正的常数的乘积。以3.1节（线性回归）中的线性回归损失函数<br>$$<br>\ell\left(w_{1}, w_{2}, b\right)=\frac{1}{n} \sum_{i=1}^{n} \frac{1}{2}\left(x_{1}^{(i)} w_{1}+x_{2}^{(i)} w_{2}+b-y^{(i)}\right)^{2}<br>$$<br>为例，其中$w_{1},w_{2}$是权重参数，$b$是偏差参数，样本$i$的输入为$x_{1}^{(i)},x_{2}^{(i)}$，标签为$y^{(i)}$，样本数为$n$。将权重参数用向量$\boldsymbol{w}=\left[w_{1}, w_{2}\right]$表示，带有$L2$范数惩罚项的新损失函数为<br>$$<br>\ell\left(w_{1}, w_{2}, b\right)+\frac{\lambda}{2 n}|\boldsymbol{w}|^{2}<br>$$<br>其中超参数$\lambda &gt;0$。当权重参数均为0时，惩罚项最小。当$\lambda $较大时，惩罚项在损失函数中的比重较大，这通常会使学到的权重参数的元素较接近0。当$\lambda $设为0时，惩罚项完全不起作用。上式中$L2$范数平方$ |\boldsymbol{w}|^{2}$ 展开后得到$w_{1}^2+w_{2}^2$ 。有了$L2$ 范数惩罚项后，在小批量随机梯度下降中，我们将线性回归一节中权重$w_{1}$和$w_{2}$的迭代方式更改为<br>$$<br>\begin{array}{l}<br>w_{1} \leftarrow\left(1-\frac{\eta \lambda}{|\mathcal{B}|}\right) w_{1}-\frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}} x_{1}^{(i)}\left(x_{1}^{(i)} w_{1}+x_{2}^{(i)} w_{2}+b-y^{(i)}\right) \<br>w_{2} \leftarrow\left(1-\frac{\eta \lambda}{|\mathcal{B}|}\right) w_{2}-\frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}} x_{2}^{(i)}\left(x_{1}^{(i)} w_{1}+x_{2}^{(i)} w_{2}+b-y^{(i)}\right) .<br>\end{array}<br>$$<br>可见，$L2$范数正则化令权重$w_{1}$和$w_{2}$先自乘小于1的数，再减去不含惩罚项的梯度。因此，$L2$范数正则化又叫权重衰减。权重衰减通过惩罚绝对值较大的模型参数为需要学习的模型增加了限制，这可能对过拟合有效。实际场景中，我们有时也在惩罚项中添加偏差元素的平方和。</p>
+<p>总结</p>
+<ul>
+<li>正则化通过为模型损失函数添加惩罚项使学出的模型参数值较小，是应对过拟合的常用手段。</li>
+<li>权重衰减等价于$L2$范数正则化，通常会使学到的权重参数的元素较接近0。</li>
+<li>权重衰减可以通过优化器中的weight_decay超参数来指定。</li>
+<li>可以定义多个优化器实例对不同的模型参数使用不同的迭代方法。</li>
+</ul>
+<hr>
+<h2 id="8-丢弃法"><a href="#8-丢弃法" class="headerlink" title="8.丢弃法"></a>8.丢弃法</h2><p>除了权重衰减以外，深度学习模型常常使用<strong>丢弃法</strong>（dropout）来应对过拟合问题。丢弃法有一些不同的变体。下面提到的丢弃法特指倒置丢弃法（inverted dropout）。</p>
+<p>方法</p>
+<p>多层感知机部分描述了一个单隐藏层的多层感知机。其中输入个数为4，隐藏单元个数为5，且隐藏单元$h_{i}(i=1,…,5)$的计算表达式为<br>$$<br>h_{i}=\phi\left(x_{1} w_{1 i}+x_{2} w_{2 i}+x_{3} w_{3 i}+x_{4} w_{4 i}+b_{i}\right)<br>$$<br>这里$\phi$是激活函数，$x_{1},…,x_{4}$是输入，隐藏单元$i$的权重参数为$w_{1i},…,w_{4i}$ ，偏差参数为$b_{i}$。当对该隐藏层使用丢弃法时，该层的隐藏单元将有一定概率被丢弃掉。设丢弃概率为$p$，那么有$p$的概率$h_{i}$会被清零，有$1−p$的概率$h_{i}$会除以$1−p$做拉伸。<strong>丢弃概率</strong>是丢弃法的超参数。具体来说，设随机变量$\xi_{i}$为0和1的概率分别为$p$和$1−p$。使用丢弃法时我们计算新的隐藏单元$h_{i}’$<br>$$<br>h_{i}^{\prime}=\frac{\xi_{i}}{1-p} h_{i}<br>$$<br>由于$E(\xi_{i})=1-p$，因此<br>$$<br>E\left(h_{i}^{\prime}\right)=\frac{E\left(\xi_{i}\right)}{1-p} h_{i}=h_{i}<br>$$<br>即<strong>丢弃法不改变其输入的期望值</strong>。让我们对图3.3中的隐藏层使用丢弃法，一种可能的结果下图所示，其中$h_{2}$和$h_{5}$被清零。这时输出值的计算不再依赖$h_{2}$和$h_{5}$ ，在反向传播时，与这两个隐藏单元相关的权重的梯度均为0。由于在训练中隐藏层神经元的丢弃是随机的，即$h_{1},…,h_{5}$都有可能被清零，输出层的计算无法过度依赖$h_{1},…,h_{5}$中的任一个，从而在训练模型时起到正则化的作用，并可以用来应对过拟合。在测试模型时，我们为了拿到更加确定性的结果，一般不使用丢弃法。</p>
+<p><img src="https://pic.imgdb.cn/item/6214ee7b2ab3f51d91a97976.jpg" alt="image-20220127151421778"></p>
+<p>总结</p>
+<ul>
+<li>可以通过使用丢弃法应对过拟合。</li>
+<li>丢弃法只在训练模型时使用。</li>
+</ul>
+<hr>
+<h2 id="9-正向传播、反向传播和计算图"><a href="#9-正向传播、反向传播和计算图" class="headerlink" title="9.正向传播、反向传播和计算图"></a>9.正向传播、反向传播和计算图</h2><p>在小批量随机梯度下降的优化算法来训练模型的实现中，我们只提供了模型的<strong>正向传播</strong>（forward propagation）的计算，即对输入计算模型输出，然后通过autograd模块来调用系统自动生成的backward函数计算梯度。基于<strong>反向传播</strong>（back-propagation）算法的自动求梯度极大简化了深度学习模型训练算法的实现。本节我们将使用数学和计算图（computational graph）两个方式来描述正向传播和反向传播。具体来说，我们将以带$L2$范数正则化的含单隐藏层的多层感知机为样例模型解释正向传播和反向传播。</p>
+<p>正向传播</p>
+<p>正向传播是指对神经网络沿着从输入层到输出层的顺序，依次计算并存储模型的中间变量（包括输出）。为简单起见，假设输入是一个特征为$x\in \Bbb R ^d $的样本，且不考虑偏差项，那么中间变量<br>$$<br>\boldsymbol{z}=\boldsymbol{W}^{(1)} \boldsymbol{x}<br>$$<br>其中$\boldsymbol{W}^{(1)} \in \Bbb R^{h\times d}$是隐藏层的权重参数。把中间变量$\boldsymbol{z} \in \Bbb R^{h}$输入按元素运算的激活函数$\phi$后，将得到向量长度为$h$的隐藏层变量<br>$$<br>\boldsymbol{h} = \phi(\boldsymbol{z})<br>$$<br>隐藏层变量$h$也是一个中间变量。假设输出层参数只有权重$\boldsymbol{W}^{(2)} \in \Bbb R^{q\times h}$，可以得到向量长度为$q$的输出层变量<br>$$<br>\boldsymbol{o}=\boldsymbol{W}^{(2)} \boldsymbol{h}<br>$$<br>假设损失函数为$\ell$，且样本标签为$y$，可以计算出单个数据样本的损失项<br>$$<br>L=\ell(\boldsymbol o, y)<br>$$<br>根据$L2$范数正则化的定义，给定超参数$\lambda $，正则化项即<br>$$<br>\boldsymbol{s}=\frac{\lambda}{2}\left(\left|\boldsymbol{W}^{(1)}\right|<em>{F}^{2}+\left|\boldsymbol{W}^{(2)}\right|</em>{F}^{2}\right)<br>$$<br>其中矩阵的Frobenius范数等价于将矩阵变平为向量后计算$L2$范数。最终，模型在给定的数据样本上带正则化的损失为<br>$$<br>J=L+ s<br>$$<br>正向传播的计算图</p>
+<p>通常绘制计算图来可视化运算符和变量在计算中的依赖关系。下图绘制了样例模型正向传播的计算图，其中左下角是输入，右上角是输出。可以看到，图中箭头方向大多是向右和向上，其中方框代表变量，圆圈代表运算符，箭头表示从输入到输出之间的依赖关系。</p>
+<p><img src="https://pic.imgdb.cn/item/6214ee942ab3f51d91a9c366.jpg" alt="image-20220129111529450"></p>
+<p>反向传播</p>
+<p>反向传播指的是<strong>计算神经网络参数梯度</strong>的方法。总的来说，反向传播依据微积分中的<strong>链式法则</strong>，沿着从<strong>输出层到输入层</strong>的顺序，依次计算并存储目标函数有关神经网络各层的中间变量以及参数的梯度。对输入或输出$X,Y,Z$为任意形状张量的函数$Y=f(X)$和$Z=g(Y)$，通过链式法则，我们有<br>$$<br>\frac{\partial Z}{\partial X}=\operatorname{prod}\left(\frac{\partial Z}{\partial Y}, \frac{\partial Y}{\partial X}\right)<br>$$<br>其中$prod$运算符将根据两个输入的形状，在必要的操作（如转置和互换输入位置）后对两个输入做乘法。</p>
+<p>回顾一下样例模型，它的参数是$\boldsymbol{W}^{(1)}$和$\boldsymbol{W}^{(2)}$，因此反向传播的目标是计算$\frac{\partial J}{\partial \boldsymbol{W}^{(1)}} $和$\frac{\partial J}{\partial \boldsymbol{W}^{(2)}} $ 。我们将应用链式法则依次计算各中间变量和参数的梯度，其计算次序与前向传播中相应中间变量的计算次序恰恰相反。首先，分别计算目标函数$J=L+s$有关损失项$L$和正则项$s$的梯度<br>$$<br>\frac{\partial J}{\partial L}=1, \quad \frac{\partial J}{\partial s}=1<br>$$<br>其次，依据链式法则计算目标函数有关输出层变量的梯度$\frac{\partial J}{\partial o}\in \Bbb R^{q}$:<br>$$<br>\frac{\partial J}{\partial o}=\operatorname{prod}\left(\frac{\partial J}{\partial L}, \frac{\partial L}{\partial o}\right)=\frac{\partial L}{\partial o}<br>$$<br>接下来，计算正则项有关两个参数的梯度：<br>$$<br>\frac{\partial s}{\partial \boldsymbol{W}^{(1)}}=\lambda \boldsymbol{W}^{(1)}, \quad \frac{\partial s}{\partial \boldsymbol{W}^{(2)}}=\lambda \boldsymbol{W}^{(2)}<br>$$<br>现在，我们可以计算最靠近输出层的模型参数的梯度$\frac{\partial J}{\partial \boldsymbol{W}^{(2)}} \in \Bbb R^{q \times h}$<br>$$<br>\frac{\partial J}{\partial W^{(2)}}=\operatorname{prod}\left(\frac{\partial J}{\partial o}, \frac{\partial o}{\partial W^{(2)}}\right)+\operatorname{prod}\left(\frac{\partial J}{\partial s}, \frac{\partial s}{\partial W^{(2)}}\right)=\frac{\partial J}{\partial o} \boldsymbol{h}^{\top}+\lambda \boldsymbol{W}^{(2)}<br>$$<br>沿着输出层向隐藏层继续反向传播，隐藏层变量的梯度$\frac{\partial J}{\partial \boldsymbol{h}} \in \Bbb R^{h}$:<br>$$<br>\frac{\partial J}{\partial \boldsymbol{h}}=\operatorname{prod}\left(\frac{\partial J}{\partial \boldsymbol{o}}, \frac{\partial \boldsymbol{o}}{\partial \boldsymbol{h}}\right)=\boldsymbol{W}^{(2)^\top} \frac{\partial J}{\partial \boldsymbol{o}}<br>$$<br>由于激活函数$\phi$是按元素运算的，中间变量$z$的梯度$\frac{\partial J}{\partial \boldsymbol{z}} \in \Bbb R^{h}$计算需要使用按元素乘法符$\odot$：<br>$$<br>\frac{\partial J}{\partial z}=\operatorname{prod}\left(\frac{\partial J}{\partial h}, \frac{\partial h}{\partial z}\right)=\frac{\partial J}{\partial h} \odot \phi^{\prime}(z)<br>$$<br>最终，我们可以得到最靠近输入层的模型参数的梯度$\frac{\partial J}{\partial \boldsymbol{W}^{(1)}} \in \Bbb R^{h\times d}$。依据链式法则，得到<br>$$<br>\frac{\partial J}{\partial W^{(1)}}=\operatorname{prod}\left(\frac{\partial J}{\partial z}, \frac{\partial z}{\partial W^{(1)}}\right)+\operatorname{prod}\left(\frac{\partial J}{\partial s}, \frac{\partial s}{\partial W^{(1)}}\right)=\frac{\partial J}{\partial z} \boldsymbol{x}^{\top}+\lambda \boldsymbol{W}^{(1)}<br>$$<br>训练深度学习模型</p>
+<p>在训练深度学习模型时，正向传播和反向传播之间相互依赖。下面以样例模型分别阐述它们之间的依赖关系。</p>
+<p>一方面，正向传播的计算可能依赖于模型参数的当前值，而这些模型参数是在反向传播的梯度计算后通过优化算法迭代的。例如，计算正则化项$\boldsymbol{s}=\frac{\lambda}{2}\left(\left|\boldsymbol{W}^{(1)}\right|_{F}^{2}+\left|\boldsymbol{W}^{(2)}\right|_{F}^{2}\right)$依赖模型参数$\boldsymbol{W}^{(1)}$和$\boldsymbol{W}^{(2)}$的当前值，而这些当前值是优化算法最近一次根据反向传播算出梯度后迭代得到的。</p>
+<p>另一方面，反向传播的梯度计算可能依赖于各变量的当前值，而这些变量的当前值是通过正向传播计算得到的。举例来说，参数梯度$\frac{\partial J}{\partial \boldsymbol{W}^{(2)}}=\frac{\partial J}{\partial o} \boldsymbol{h}^{\top}+\lambda \boldsymbol{W}^{(2)}$的计算需要依赖隐藏层变量的当前值$h$。这个当前值是通过从输入层到输出层的正向传播计算并存储得到的。</p>
+<p>因此，在模型参数初始化完成后，我们交替地进行正向传播和反向传播，并根据反向传播计算的梯度迭代模型参数。既然我们在反向传播中使用了正向传播中计算得到的中间变量来避免重复计算，那么这个复用也导致正向传播结束后不能立即释放中间变量内存。这也是训练要比预测占用更多内存的一个重要原因。另外需要指出的是，这些中间变量的个数大体上与网络层数线性相关，每个变量的大小跟批量大小和输入个数也是线性相关的，它们是导致较深的神经网络使用较大批量训练时更容易超内存的主要原因。</p>
+<p>总结：</p>
+<ul>
+<li>正向传播沿着从输入层到输出层的顺序，依次计算并存储神经网络的中间变量。</li>
+<li>反向传播沿着从输出层到输入层的顺序，依次计算并存储神经网络中间变量和参数的梯度。</li>
+<li>在训练深度学习模型时，正向传播和反向传播相互依赖。</li>
+</ul>
+<hr>
+<h2 id="10-数值稳定性和模型初始化"><a href="#10-数值稳定性和模型初始化" class="headerlink" title="10.数值稳定性和模型初始化"></a>10.数值稳定性和模型初始化</h2><p>理解了正向传播与反向传播以后，来讨论一下深度学习模型的数值稳定性问题以及模型参数的初始化方法。深度模型有关数值稳定性的典型问题是<strong>衰减</strong>（vanishing）和<strong>爆炸</strong>（explosion）。</p>
+<p>衰减和爆炸</p>
+<p>当神经网络的层数较多时，模型的数值稳定性容易变差。假设一个层数为$L$的多层感知机的第$l$层$H^{(l)}$的权重参数为$W^{l}$，输出层$H^{(L)}$的权重参数为$W^{(L)}$。为了便于讨论，不考虑偏差参数，且设所有隐藏层的激活函数为恒等映射（identity mapping）$\phi (x)=x$。给定输入$X$，多层感知机的第l层的输出$H^{(l)}=XW^{(1)}W^{(2)}…W^{(l)}$。此时，如果过层数$l$ 较大，$H^{(l)}$的计算可能会出现衰减或爆炸。举个例子，假设输入和所有层的权重参数都是标量，如权重参数为$0.2$和$5$，多层感知机的第30层输出为输入$X$分别与$0.2^{30}\approx 1\times10^{-21}$（衰减）和$5^{30} \approx 9\times10^{20}$（爆炸）的乘积。类似地，当层数较多时，梯度的计算也更容易出现衰减或爆炸。</p>
+<p>随着内容的不断深入，我们会在后续进一步介绍深度学习的数值稳定性问题以及解决方法。</p>
+<p>随机初始化模型参数</p>
+<p>在神经网络中，通常需要随机初始化模型参数。下面我们来解释这样做的原因。</p>
+<p>回顾多层感知机中描述的多层感知机。为了方便解释，假设输出层只保留一个输出单元$o_{1}$（删去$o_{2}$和$o_{3}$以及指向它们的箭头），且隐藏层使用相同的激活函数。如果将每个隐藏单元的参数都初始化为相等的值，那么在正向传播时每个隐藏单元将根据相同的输入计算出相同的值，并传递至输出层。在反向传播中，每个隐藏单元的参数梯度值相等。因此，这些参数在使用基于梯度的优化算法迭代后值依然相等。之后的迭代也是如此。在这种情况下，无论隐藏单元有多少，隐藏层本质上只有1个隐藏单元在发挥作用。因此，正如在前面的实验中所做的那样，我们通常将神经网络的模型参数，特别是权重参数，进行随机初始化。</p>
+<p>PyTorch的默认随机初始化</p>
+<p>随机初始化模型参数的方法有很多。在线性回归的简洁实现中，我们使用<code>torch.nn.init.normal_()</code>使模型<code>net</code>的权重参数采用正态分布的随机初始化方式。不过，PyTorch中<code>nn.Module</code>的模块参数都采取了较为合理的初始化策略（不同类型的layer具体采样的哪一种初始化方法的可参考源代码），因此一般不用我们考虑。</p>
+<p>Xavier随机初始化</p>
+<p>还有一种比较常用的随机初始化方法叫作Xavier随机初始化。 假设某全连接层的输入个数为$a$，输出个数为$b$，Xavier随机初始化将使该层中权重参数的每个元素都随机采样于均匀分布<br>$$<br>U\left(-\sqrt{\frac{6}{a+b}}, \sqrt{\frac{6}{a+b}}\right)<br>$$<br>它的设计主要考虑到，模型参数初始化后，每层输出的方差不该受该层输入个数影响，且每层梯度的方差也不该受该层输出个数影响。</p>
+<p>总结</p>
+<ul>
+<li>深度模型有关数值稳定性的典型问题是衰减和爆炸。当神经网络的层数较多时，模型的数值稳定性容易变差。</li>
+<li>我们通常需要随机初始化神经网络的模型参数，如权重参数。</li>
+</ul>
+<hr>
+<h2 id="11-模型构造"><a href="#11-模型构造" class="headerlink" title="11.模型构造"></a>11.模型构造</h2><ul>
+<li>可以通过继承<code>Module</code>类来构造模型。</li>
+<li><code>Sequential</code>、<code>ModuleList</code>、<code>ModuleDict</code>类都继承自<code>Module</code>类。</li>
+<li>与<code>Sequential</code>不同，<code>ModuleList</code>和<code>ModuleDict</code>并没有定义一个完整的网络，它们只是将不同的模块存放在一起，需要自己定义<code>forward</code>函数。</li>
+<li>虽然<code>Sequential</code>等类可以使模型构造更加简单，但直接继承<code>Module</code>类可以极大地拓展模型构造的灵活性。</li>
+</ul>
+<hr>
+<h2 id="12-模型参数的访问、初始化和共享"><a href="#12-模型参数的访问、初始化和共享" class="headerlink" title="12.模型参数的访问、初始化和共享"></a>12.模型参数的访问、初始化和共享</h2><hr>
+<h2 id="13-批量归一化"><a href="#13-批量归一化" class="headerlink" title="13.批量归一化"></a>13.批量归一化</h2><p>对输入数据做了标准化处理：处理后的任意一个特征在数据集中所有样本上的均值为0、标准差为1。标准化处理输入数据使各个特征的分布相近：这往往更容易训练出有效的模型。</p>
+<p>通常来说，数据标准化预处理对于浅层模型就足够有效了。随着模型训练的进行，当每层中参数更新时，靠近输出层的输出较难出现剧烈变化。但对深层神经网络来说，即使输入数据已做标准化，训练中模型参数的更新依然很容易造成靠近输出层输出的剧烈变化。这种计算数值的不稳定性通常令我们难以训练出有效的深度模型。</p>
+<p>批量归一化的提出正是为了应对深度模型训练的挑战。在模型训练时，批量归一化利用小批量上的均值和标准差，不断调整神经网络中间输出，从而使整个神经网络在各层的中间输出的数值更稳定。<strong>批量归一化和下一节将要介绍的残差网络为训练和设计深度模型提供了两类重要思路</strong>。</p>
+<h3 id="批量归一化层"><a href="#批量归一化层" class="headerlink" title="批量归一化层"></a>批量归一化层</h3><p>对全连接层和卷积层做批量归一化的方法稍有不同。下面将分别介绍这两种情况下的批量归一化。</p>
+<h4 id="对全连接层做批量归一化"><a href="#对全连接层做批量归一化" class="headerlink" title="对全连接层做批量归一化"></a>对全连接层做批量归一化</h4><p>我们先考虑如何对全连接层做批量归一化。通常，我们将批量归一化层置于全连接层中的仿射变换和激活函数之间。设全连接层的输入为$u$，权重参数和偏差参数分别为$W$和$b$，激活函数为$\phi$。设批量归一化的运算符为$BN$。那么，使用批量归一化的全连接层的输出为<br>$$<br>\phi(BN(\boldsymbol{x}))<br>$$<br>其中批量归一化输入$\boldsymbol{x}$由仿射变换<br>$$<br>\boldsymbol{x=Wu+b}<br>$$<br>得到。考虑一个由$m$个样本组成的小批量，仿射变换的输出为一个新的小批量$\mathcal{B} = {\boldsymbol{x}^{(1)}, \ldots, \boldsymbol{x}^{(m)} }$。它们正是批量归一化层的输入。对于小批量$\mathcal{B}$中任意样本$\boldsymbol{x}^{(i)} \in \mathbb{R}^d, 1 \leq i \leq m$，批量归一化层的输出同样是$d$维向量<br>$$<br>\boldsymbol{y}^{(i)} = BN(\boldsymbol{x}^{(i)})<br>$$<br>并由以下几步求得。首先，对小批量$\mathcal{B}$求均值和方差：<br>$$<br>\begin{array}{c}<br>\boldsymbol{\mu}<em>{\mathcal{B}} \leftarrow \frac{1}{m} \sum</em>{i=1}^{m} \boldsymbol{x}^{(i)} \<br>\boldsymbol{\sigma}<em>{\mathcal{B}}^{2} \leftarrow \frac{1}{m} \sum</em>{i=1}^{m}\left(\boldsymbol{x}^{(i)}-\boldsymbol{\mu}<em>{\mathcal{B}}\right)^{2}<br>\end{array}<br>$$<br>其中的平方计算是按元素求平方。接下来，使用按元素开方和按元素除法对$\boldsymbol{x}^{(i)}$标准化：<br>$$<br>\hat{\boldsymbol{x}}^{(i)} \leftarrow \frac{\boldsymbol{x}^{(i)}-\boldsymbol{\mu}</em>{\mathcal{B}}}{\sqrt{\sigma_{\mathcal{B}}^{2}+\epsilon}}<br>$$<br>这里$\epsilon &gt; 0$是一个很小的常数，保证分母大于0。在上面标准化的基础上，批量归一化层引入了两个可以学习的模型参数，拉伸（scale）参数 $\boldsymbol{\gamma}$和偏移（shift）参数 $\boldsymbol{\beta}$。这两个参数和$\boldsymbol{x}^{(i)}$形状相同，皆为$d$维向量。它们与$\boldsymbol{x}^{(i)}$分别做按元素乘法（符号$\odot$）和加法计算：<br>$$<br>\boldsymbol{y}^{(i)} \leftarrow \boldsymbol{\gamma} \odot \hat{\boldsymbol{x}}^{(i)}+\boldsymbol{\beta}<br>$$<br>至此，我们得到了$\boldsymbol{x}^{(i)}$的批量归一化的输出$\boldsymbol{y}^{(i)}$。 值得注意的是，可学习的拉伸和偏移参数保留了不对$\hat{\boldsymbol{x}}^{(i)}做$批量归一化的可能：此时只需学出$\boldsymbol{\gamma} = \sqrt{\boldsymbol{\sigma}_\mathcal{B}^2 + \epsilon}$和$\boldsymbol{\beta} = \boldsymbol{\mu}_\mathcal{B}$。我们可以对此这样理解：如果批量归一化无益，理论上，学出的模型可以不使用批量归一化。</p>
+<h4 id="对卷积层做批量归一化"><a href="#对卷积层做批量归一化" class="headerlink" title="对卷积层做批量归一化"></a>对卷积层做批量归一化</h4><p>对卷积层来说，批量归一化发生在卷积计算之后、应用激活函数之前。如果卷积计算输出多个通道，我们需要对这些通道的输出分别做批量归一化，且<strong>每个通道都拥有独立的拉伸和偏移参数，并均为标量</strong>。设小批量中有$m$个样本。在单个通道上，假设卷积计算输出的高和宽分别为$p$和$q$。我们需要对该通道中$m×p×q$个元素同时做批量归一化。对这些元素做标准化计算时，我们使用相同的均值和方差，即该通道中$m×p×q$个元素的均值和方差。</p>
+<h4 id="预测时的批量归一化"><a href="#预测时的批量归一化" class="headerlink" title="预测时的批量归一化"></a>预测时的批量归一化</h4><p>使用批量归一化训练时，我们可以将批量大小设得大一点，从而使批量内样本的均值和方差的计算都较为准确。将训练好的模型用于预测时，我们希望模型对于任意输入都有确定的输出。因此，单个样本的输出不应取决于批量归一化所需要的随机小批量中的均值和方差。一种常用的方法是通过移动平均估算整个训练数据集的样本均值和方差，并在预测时使用它们得到确定的输出。可见，和丢弃层一样，批量归一化层在训练模式和预测模式下的计算结果也是不一样的。</p>
+<hr>
+<h2 id="循环神经网络"><a href="#循环神经网络" class="headerlink" title="循环神经网络"></a>循环神经网络</h2><h3 id="不含隐藏状态的神经网络"><a href="#不含隐藏状态的神经网络" class="headerlink" title="不含隐藏状态的神经网络"></a>不含隐藏状态的神经网络</h3><p>让我们考虑一个含单隐藏层的多层感知机。给定样本数为$n$、输入个数（特征数或特征向量维度）为$d$的小批量数据样本$\boldsymbol{X} \in \mathbb{R}^{n \times d}$。设隐藏层的激活函数为$\phi$，那么隐藏层的输出$\boldsymbol{H} \in \mathbb{R}^{n \times h}$计算为<br>$$<br>\boldsymbol{H}=\phi\left(\boldsymbol{X} \boldsymbol{W}<em>{x h}+\boldsymbol{b}</em>{h}\right)<br>$$<br>其中隐藏层权重参数$\boldsymbol{W}<em>{xh} \in \mathbb{R}^{d \times h}$，隐藏层偏差参数 $\boldsymbol{b}<em>h \in \mathbb{R}^{1 \times h}$，$h$为隐藏单元个数。上式相加的两项形状不同，因此将按照广播机制相加。把隐藏变量$\boldsymbol{H}$作为输出层的输入，且设输出个数为$q$（如分类问题中的类别数），输出层的输出为<br>$$<br>\boldsymbol{O}=\phi\left(\boldsymbol{H} \boldsymbol{W}</em>{h q}+\boldsymbol{b}</em>{q}\right)<br>$$<br>其中输出变量$\boldsymbol{O} \in \mathbb{R}^{n \times q}$, 输出层权重参数$\boldsymbol{W}_{hq} \in \mathbb{R}^{h \times q}$, 输出层偏差参数$\boldsymbol{b}_q \in \mathbb{R}^{1 \times q}$。如果是分类问题，我们可以使用$\text{softmax}(\boldsymbol{O})$来计算输出类别的概率分布。</p>
+<h3 id="含隐藏状态的循环神经网络"><a href="#含隐藏状态的循环神经网络" class="headerlink" title="含隐藏状态的循环神经网络"></a>含隐藏状态的循环神经网络</h3><p>现在我们考虑输入数据存在时间相关性的情况。假设$\boldsymbol{X}<em>t \in \mathbb{R}^{n \times d}$是序列中时间步$t$的小批量输入，$\boldsymbol{H}<em>t \in \mathbb{R}^{n \times h}$是该时间步的隐藏变量。与多层感知机不同的是，这里我们保存上一时间步的隐藏变量$\boldsymbol{H}</em>{t-1}$，并引入一个新的权重参数$\boldsymbol{W}</em>{hh} \in \mathbb{R}^{h \times h}$，该参数用来描述在当前时间步如何使用上一时间步的隐藏变量。具体来说，时间步tt<em>t</em>的隐藏变量的计算由当前时间步的输入和上一时间步的隐藏变量共同决定：<br>$$<br>\boldsymbol{H}<em>{t}=\phi\left(\boldsymbol{X}</em>{t} \boldsymbol{W}<em>{x h}+\boldsymbol{H}</em>{t-1} \boldsymbol{W}<em>{h h}+\boldsymbol{b}</em>{h}\right)<br>$$<br>与多层感知机相比，我们在这里添加了$\boldsymbol{H}<em>{t-1} \boldsymbol{W}</em>{hh}$一项。由上式中相邻时间步的隐藏变量$\boldsymbol{H}<em>t$和$\boldsymbol{H}</em>{t-1}$之间的关系可知，这里的隐藏变量能够捕捉截至当前时间步的序列的历史信息，就像是神经网络当前时间步的状态或记忆一样。因此，该隐藏变量也称为隐藏状态。由于隐藏状态在当前时间步的定义使用了上一时间步的隐藏状态，上式的计算是循环的。使用循环计算的网络即循环神经网络（recurrent neural network）。</p>
+<p>循环神经网络有很多种不同的构造方法。含上式所定义的隐藏状态的循环神经网络是极为常见的一种。若无特别说明，本章中的循环神经网络均基于上式中隐藏状态的循环计算。在时间步$t$，输出层的输出和多层感知机中的计算类似：<br>$$<br>\boldsymbol{O}<em>{t}=\boldsymbol{H}</em>{t} \boldsymbol{W}<em>{h q}+\boldsymbol{b}</em>{q}<br>$$<br>循环神经网络的参数包括隐藏层的权重$\boldsymbol{W}<em>{xh} \in \mathbb{R}^{d \times h}$、$\boldsymbol{W}</em>{hh} \in \mathbb{R}^{h \times h}$和偏差 $\boldsymbol{b}<em>h \in \mathbb{R}^{1 \times h}$，以及输出层的权重$\boldsymbol{W}</em>{hq} \in \mathbb{R}^{h \times q}$和偏差$\boldsymbol{b}_q \in \mathbb{R}^{1 \times q}$。值得一提的是，即便在不同时间步，循环神经网络也始终使用这些模型参数。因此，循环神经网络模型参数的数量不随时间步的增加而增长。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://chaoyuan666.github.io">ChaoYuan</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://chaoyuan666.github.io/2022/01/22/blog/%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F/Pytorch%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">http://chaoyuan666.github.io/2022/01/22/blog/%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F/Pytorch%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://chaoyuan666.github.io" target="_blank">超远の杂货铺</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Pytorch/">Pytorch</a></div><div class="post_share"><div class="social-share" data-image="https://picsum.photos/id/525/5184/3456" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/gh/overtrue/share.js@master/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/02/14/blog/%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F/git/"><img class="prev-cover" src="https://picsum.photos/id/525/5184/3456" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Git 五分钟教程</div></div></a></div><div class="next-post pull-right"><a href="/2022/01/18/blog/%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F/web/"><img class="next-cover" src="https://picsum.photos/id/525/5184/3456" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">常用Web</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%A8%A1%E5%9E%8B%E5%9B%BA%E5%AE%9A"><span class="toc-number">1.</span> <span class="toc-text">1.模型固定</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8%E7%9B%B8%E5%90%8C%E7%9A%84%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%EF%BC%8C%E8%B7%91%E5%87%BA%E6%9D%A5%E7%9A%84%E6%95%88%E6%9E%9C%E5%AE%8C%E5%85%A8%E4%B8%8D%E5%90%8C%EF%BC%8C%E7%94%A8%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%8E%87%EF%BC%8C%E8%BF%AD%E4%BB%A3%E6%AC%A1%E6%95%B0%EF%BC%8Cbatch-size-%E9%83%BD%E6%98%AF%E4%B8%80%E6%A0%B7%EF%BC%9F"><span class="toc-number">1.1.</span> <span class="toc-text">为什么使用相同的网络结构，跑出来的效果完全不同，用的学习率，迭代次数，batch size 都是一样？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-PyTorch%E6%98%AF%E5%A6%82%E4%BD%95%E6%B1%82%E6%A2%AF%E5%BA%A6%E7%9A%84%EF%BC%9F"><span class="toc-number">2.</span> <span class="toc-text">2.PyTorch是如何求梯度的？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%BB%80%E4%B9%88%E6%98%AF%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%EF%BC%9F"><span class="toc-number">3.</span> <span class="toc-text">3.什么是线性回归？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-softmax%E5%9B%9E%E5%BD%92"><span class="toc-number">4.</span> <span class="toc-text">4.softmax回归</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%A4%9A%E5%B1%82%E6%84%9F%E7%9F%A5%E6%9C%BA"><span class="toc-number">5.</span> <span class="toc-text">5.多层感知机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E6%A8%A1%E5%9E%8B%E9%80%89%E6%8B%A9%E3%80%81%E6%AC%A0%E6%8B%9F%E5%90%88%E5%92%8C%E8%BF%87%E6%8B%9F%E5%90%88"><span class="toc-number">6.</span> <span class="toc-text">6.模型选择、欠拟合和过拟合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E6%9D%83%E9%87%8D%E8%A1%B0%E5%87%8F"><span class="toc-number">7.</span> <span class="toc-text">7.权重衰减</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E4%B8%A2%E5%BC%83%E6%B3%95"><span class="toc-number">8.</span> <span class="toc-text">8.丢弃法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E6%AD%A3%E5%90%91%E4%BC%A0%E6%92%AD%E3%80%81%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E5%92%8C%E8%AE%A1%E7%AE%97%E5%9B%BE"><span class="toc-number">9.</span> <span class="toc-text">9.正向传播、反向传播和计算图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-%E6%95%B0%E5%80%BC%E7%A8%B3%E5%AE%9A%E6%80%A7%E5%92%8C%E6%A8%A1%E5%9E%8B%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">10.</span> <span class="toc-text">10.数值稳定性和模型初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-%E6%A8%A1%E5%9E%8B%E6%9E%84%E9%80%A0"><span class="toc-number">11.</span> <span class="toc-text">11.模型构造</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-%E6%A8%A1%E5%9E%8B%E5%8F%82%E6%95%B0%E7%9A%84%E8%AE%BF%E9%97%AE%E3%80%81%E5%88%9D%E5%A7%8B%E5%8C%96%E5%92%8C%E5%85%B1%E4%BA%AB"><span class="toc-number">12.</span> <span class="toc-text">12.模型参数的访问、初始化和共享</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-%E6%89%B9%E9%87%8F%E5%BD%92%E4%B8%80%E5%8C%96"><span class="toc-number">13.</span> <span class="toc-text">13.批量归一化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%B9%E9%87%8F%E5%BD%92%E4%B8%80%E5%8C%96%E5%B1%82"><span class="toc-number">13.1.</span> <span class="toc-text">批量归一化层</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E5%85%A8%E8%BF%9E%E6%8E%A5%E5%B1%82%E5%81%9A%E6%89%B9%E9%87%8F%E5%BD%92%E4%B8%80%E5%8C%96"><span class="toc-number">13.1.1.</span> <span class="toc-text">对全连接层做批量归一化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E5%8D%B7%E7%A7%AF%E5%B1%82%E5%81%9A%E6%89%B9%E9%87%8F%E5%BD%92%E4%B8%80%E5%8C%96"><span class="toc-number">13.1.2.</span> <span class="toc-text">对卷积层做批量归一化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%84%E6%B5%8B%E6%97%B6%E7%9A%84%E6%89%B9%E9%87%8F%E5%BD%92%E4%B8%80%E5%8C%96"><span class="toc-number">13.1.3.</span> <span class="toc-text">预测时的批量归一化</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="toc-number">14.</span> <span class="toc-text">循环神经网络</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E5%90%AB%E9%9A%90%E8%97%8F%E7%8A%B6%E6%80%81%E7%9A%84%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="toc-number">14.1.</span> <span class="toc-text">不含隐藏状态的神经网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AB%E9%9A%90%E8%97%8F%E7%8A%B6%E6%80%81%E7%9A%84%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="toc-number">14.2.</span> <span class="toc-text">含隐藏状态的循环神经网络</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By ChaoYuan</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"></div><div class="aplayer no-destroy" data-id="7303803822" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="true" data-order="random"> </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
